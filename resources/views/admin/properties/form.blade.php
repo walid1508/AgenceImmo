@@ -7,12 +7,12 @@
 
     <h1>@yield('title')</h1>
 
-    <form class="vstack gap-2" action="{{route($property->exists ? 'admin.property.edit' : 'admin.property.store', ['property' => $property])}}"
+    <form class="vstack gap-2" action="{{route($property->exists ? 'admin.property.update' : 'admin.property.store', ['property' => $property])}}"
           method="post"
     >
 
         @csrf
-        @method($property->exists ? 'put' : 'post')
+        @method($property->exists ? 'patch' : 'post')
 
         <div class="row">
             @include('shared.input', ['class' => 'col' ,'label' => 'Titre', 'name' => 'title', 'value' => $property->title])
