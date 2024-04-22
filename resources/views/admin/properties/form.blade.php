@@ -12,7 +12,7 @@
     >
 
         @csrf
-        @method($property->exists ? 'patch' : 'post')
+        @method($property->exists ? 'put' : 'post')
 
         <div class="row">
             @include('shared.input', ['class' => 'col' ,'label' => 'Titre', 'name' => 'title', 'value' => $property->title])
@@ -33,6 +33,7 @@
             @include('shared.input', ['class' => 'col', 'name' => 'postal_code', 'label' => 'Code postal', 'value' => $property->postal_code])
         </div>
         @include('shared.checkbox', ['name' => 'sold', 'label' => 'Vendu', 'value' => $property->sold])
+        @include('shared.select', ['name' => 'options', 'label' => 'Options', 'value' => $property->options()->pluck('id'), 'multiple' => true, 'options' => $options])
 
         <div>
             <button class="btn btn-success">
